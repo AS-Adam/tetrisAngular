@@ -17,6 +17,7 @@ export class AppComponent {
   add() {
     if (this.name.length > 0 && this.email.length > 0) {
       this.playerInfo.push(this.name);
+      this.name;
     }
   }
   showTime(stat) {
@@ -27,17 +28,13 @@ export class AppComponent {
         }, 1000);
         break;
       case 'stopped':
-        // this.time = 0;
+
         clearInterval(this.interval);
         break;
       case 'ready':
         this.time = 0;
         clearInterval(this.interval);
         break;
-      // case 'restart':
-      //   this.time = 0;
-      //   this.status = "started";
-      //   break;
     };
   }
   startGame(game) {
@@ -70,8 +67,6 @@ export class AppComponent {
     game.actionReset();
     this.time = 0;
     this.counter = 0;
-
-    // this.showTime(this.status)
   }
 }
 
