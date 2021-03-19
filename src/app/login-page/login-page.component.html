@@ -1,0 +1,14 @@
+<form #form="ngForm" (submit)="submitForm(form.form)">
+
+    <!-- <label>Welcome to Tetris Game </label>
+    <br />
+    <br />
+    <br />
+    <h3>Please enter your name and e-mail below</h3> -->
+    <input ngModel #name="ngModel" name="name" type="text" required minlength="3" />
+    <br />
+    <input type="text" ngModel #email="ngModel" name="email" required email />
+    <br />
+    <button type="submit">START GAME</button>
+</form>
+<!-- [disabled]="!form.valid" -->
