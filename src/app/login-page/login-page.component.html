@@ -1,14 +1,37 @@
-<form #form="ngForm" (submit)="submitForm(form.form)">
+<!-- <form #form="ngForm" (submit)="submitForm(form.form)">
 
-    <!-- <label>Welcome to Tetris Game </label>
+    <label>Welcome to Tetris Game </label>
     <br />
     <br />
     <br />
-    <h3>Please enter your name and e-mail below</h3> -->
-    <input ngModel #name="ngModel" name="name" type="text" required minlength="3" />
+    <h3>Please enter your name and e-mail below</h3>
+    <input ngModel #name="ngModel" name="name" type="text" required minlength="5" />
     <br />
     <input type="text" ngModel #email="ngModel" name="email" required email />
     <br />
     <button type="submit">START GAME</button>
-</form>
+</form> -->
 <!-- [disabled]="!form.valid" -->
+
+<form [formGroup]="loginForm" (submit)="submitForm(loginForm)">
+
+    <input type='text' placeholder="type your email here" formControlName="email" />
+    <br />
+    <ng-container *ngIf="loginForm.controls.email?.touched">
+        <span *ngIf="loginForm.controls.email.invalid">
+            Bad email
+        </span>
+    </ng-container>
+    <br />
+    <input type='text' placeholder="type your name here" formControlName="name" />
+    <br />
+    <ng-container *ngIf="loginForm.controls.name?.touched">
+        <span *ngIf="loginForm.controls.name.invalid">
+            minimum 5 signs
+        </span>
+    </ng-container>
+    <br />
+    <br />
+
+    <button [disabled]="!loginForm.valid">Log In</button>
+</form>

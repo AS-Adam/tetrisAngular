@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Player } from "../app.component";
+import { DataService } from '../data.service';
 // import { start } from 'repl';
 @Component({
     selector: 'app-game',
@@ -7,30 +9,42 @@ import { Player } from "../app.component";
     styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-    @Input() playerData: Player;
+    @Input() public playerData: Player;
     @Output() close = new EventEmitter();
     public counter = 0;
-    status: string = "ready";
-    constructor() { }
+    public status: string = "ready";
+    public name: string;
+    public time: number = 0;
+    public playerName: string;
+    public highScores;
+    public testList
+
+    constructor(private _router: Router, private _dataService: DataService) {
+        this.playerName = this._dataService.getData().name;
+        this.testList = this._dataService.getScores().subscribe();
+        this.highScores = this.testList;
+    }
 
     ngOnInit(): void {
+
     }
     gameCounter() {
         this.counter++;
     }
     closeGame() {
         this.close.emit();
+        this._router.navigate(['/login-page'])
     }
 
 
 
 
-    // public name: string;
+
     // color: string;
     // email: string;
 
     // playerInfo = [];
-    // time: number = 0;
+
     // counter: number = 0;
 
     // interval;

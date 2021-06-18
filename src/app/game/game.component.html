@@ -4,10 +4,15 @@
     <button (click)="pauseGame(game)">Stop</button>
     <button (click)="restartGame(game)">Reset</button>
     <button (click)="closeGame()">closeGame</button>
-    <!-- <h1> Player name: {{name}} </h1>
-    <h1> Time: {{time}} s</h1>
+    <button class="game" (click)="game.actionRotate()">Rotate</button>
+    <button class="game" (click)="game.actionLeft()">Left</button>
+    <button class="game" (click)="game.actionRight()">Right</button>
+    <button class="game" (click)="game.actionDown()">Down</button>
+    <h1> Player name: {{playerName}} </h1>
+    <h1> Time: {{time}} </h1>
+    <h1>{{highScores}}</h1>
     <h1> Points: {{counter}} </h1>
-    <h1> Game status: {{status}}</h1> -->
+    <h1> Game status: {{status}}</h1>
     <!-- <button class="game" (click)="showGameHistory()">Game History</button>
     <button class="game" (click)="game.actionRotate()">Rotate</button>
     <button class="game" (click)="game.actionLeft()">Left</button>

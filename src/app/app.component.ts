@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-enum STATES {
-  LOGINPAGE,
-  GAME
-}
+// enum STATES {
+//   LOGINPAGE,
+//   GAME
+// }
 export interface Player {
   name: string;
   email: string;
@@ -15,8 +15,9 @@ export interface Player {
 })
 export class AppComponent {
   public player: Player;
-  public states = STATES;
-  public appState = STATES.LOGINPAGE;
+  // public states = STATES;
+  // public appState = STATES.LOGINPAGE;
+
   // public name: string;
   // color: string;
   // email: string;
@@ -36,15 +37,16 @@ export class AppComponent {
   public constructor(private _router: Router) {
   }
   Game() {
-    this._router.navigate(['/game'])
+    // this._router.navigate(['/game'])
   }
   public onFormSubmit(playerData) {
     this.player = playerData;
-    this.appState = STATES.GAME;
+    // this.appState = STATES.GAME;
+    this._router.navigate(['/game'])
 
   }
   public onGameClosed() {
-    this.appState = STATES.LOGINPAGE;
+    // this.appState = STATES.LOGINPAGE;
     this._router.navigate(['/login-page'])
   }
   // add() {
