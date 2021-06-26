@@ -29,9 +29,7 @@ export class GameComponent implements OnInit {
                 this.highScores = result;
                 console.log(result)
             });
-
     }
-
     ngOnInit(): void {
         this._route.params.subscribe(({ color }) => {
             this.color = color;
@@ -43,16 +41,11 @@ export class GameComponent implements OnInit {
     }
     closeGame() {
         this.close.emit();
-        this._router.navigate(['/login-page'])
+        this._router.navigate(['/login-page/normal'])
     }
     toggleAscending() {
         this.sortAscending = !this.sortAscending;
     }
-
-
-
-
-
     // color: string;
     // email: string;
 
@@ -130,10 +123,11 @@ export class GameComponent implements OnInit {
     // }
     restartGame(game) {
         game.actionStop();
+        this.counter = 0;
         // this.startGame(game);
         // game.actionReset();
         // this.time = 0;
-        this.counter = 0;
+
     }
     // showGameHistory() {
     //   this.showHistory = !this.showHistory;

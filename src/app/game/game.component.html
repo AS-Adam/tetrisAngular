@@ -5,30 +5,37 @@
     <button (click)="pauseGame(game)">Stop</button>
     <button (click)="restartGame(game)">Reset</button>
     <button (click)="closeGame()">closeGame</button>
+    <br>
+    <br>
     <button class="game" (click)="game.actionRotate()">Rotate</button>
-    <button class="game" (click)="game.actionLeft()">Left</button>
-    <button class="game" (click)="game.actionRight()">Right</button>
+    <br>
+    <button class="game" class="moveLeft" (click)="game.actionLeft()">Left</button>
+    <button class="game" class="moveRight" (click)="game.actionRight()">Right</button>
+    <br>
     <button class="game" (click)="game.actionDown()">Down</button>
     <h1> Player name: {{playerName}} </h1>
     <!-- <h1> Time: {{time}} </h1> -->
     <h1> Points: {{counter}} </h1>
-    <h1> Game status: {{status}}</h1>
+    <!-- <h1> Game status: {{status}}</h1> -->
     <!-- <h1>{{highScores}}</h1> -->
     <!-- <input type="text" placeholder="Filter by name" [(ngModel)]="nameFilter" /> -->
     <!-- <button (click)="toggleAscending()">
         {{ sortAscending ? "Sort Descending" : "Sort Ascending" }}
     </button> -->
-    <button (click)="toggleAscending()">
-        {{ sortAscending ? "Sort Descending" : "Sort Ascending" }}
-    </button>
-    <ul>
-        <li *ngFor="
+    <div>
+        <button (click)="toggleAscending()">
+            {{ sortAscending ? "Sort Descending" : "Sort Ascending" }}
+        </button>
+        <h1>Score list:</h1>
+        <ul>
+            <li *ngFor="
           let score of highScores
             | sortByScore: sortAscending
         ">
-            {{ score.name }} - {{ score.score }}
-        </li>
-    </ul>
+                {{ score.name }} - {{ score.score }}
+            </li>
+        </ul>
+    </div>
     <!-- <button class="game" (click)="showGameHistory()">Game History</button>
     <button class="game" (click)="game.actionRotate()">Rotate</button>
     <button class="game" (click)="game.actionLeft()">Left</button>

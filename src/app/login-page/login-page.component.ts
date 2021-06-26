@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
     public loginForm: FormGroup;
     @Output() submit = new EventEmitter<Player>();
     public color: string = 'normal';
+    public contrastColor: boolean = false;
     constructor(private _router: Router, public fb: FormBuilder, private _route: ActivatedRoute) {
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -28,25 +29,19 @@ export class LoginPageComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    // submitForm(form: FormGroup) {
-    //     this.submit.emit(form.value);
-    //     this._router.navigate(['/game'])
-    //     // this.PlayerName = Player;
-    //     PlayerData = form.value;
 
-    // }
     submitForm(form): void {
         this.submit.emit(form.value);
         this._router.navigate([`/game/${this.color}`])
-        // this.PlayerName = Player;
+
         PlayerData = form.value;
     }
     getPlayername() {
         return this.PlayerName;
     }
     selectColor(color): void {
+        this.contrastColor = !this.contrastColor
         this._router.navigate([`/login-page/${color}`]);
-        // this._router.navigate([`/login-page/${color}`]);
     }
 }
 
