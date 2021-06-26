@@ -1,5 +1,6 @@
 <div>
-    <tetris-core #game (lineCleared)="gameCounter()"></tetris-core>
+    <tetris-core #game (lineCleared)="gameCounter()" [ngClass]="{ 'black-and-white': color === 'highContrast' }">
+    </tetris-core>
     <button (click)="startGame(game)">Start</button>
     <button (click)="pauseGame(game)">Stop</button>
     <button (click)="restartGame(game)">Reset</button>
@@ -9,10 +10,25 @@
     <button class="game" (click)="game.actionRight()">Right</button>
     <button class="game" (click)="game.actionDown()">Down</button>
     <h1> Player name: {{playerName}} </h1>
-    <h1> Time: {{time}} </h1>
-    <h1>{{highScores}}</h1>
+    <!-- <h1> Time: {{time}} </h1> -->
     <h1> Points: {{counter}} </h1>
     <h1> Game status: {{status}}</h1>
+    <!-- <h1>{{highScores}}</h1> -->
+    <!-- <input type="text" placeholder="Filter by name" [(ngModel)]="nameFilter" /> -->
+    <!-- <button (click)="toggleAscending()">
+        {{ sortAscending ? "Sort Descending" : "Sort Ascending" }}
+    </button> -->
+    <button (click)="toggleAscending()">
+        {{ sortAscending ? "Sort Descending" : "Sort Ascending" }}
+    </button>
+    <ul>
+        <li *ngFor="
+          let score of highScores
+            | sortByScore: sortAscending
+        ">
+            {{ score.name }} - {{ score.score }}
+        </li>
+    </ul>
     <!-- <button class="game" (click)="showGameHistory()">Game History</button>
     <button class="game" (click)="game.actionRotate()">Rotate</button>
     <button class="game" (click)="game.actionLeft()">Left</button>

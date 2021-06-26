@@ -30,8 +30,8 @@ export class DataService {
       'Content-Type': 'application/json',
       // 'auth-token': this.TOKEN.toString(),
     });
-    // const URL = 'https://gorest.co.in/public-api/todos';
-    const URL = 'http://tetris.chrum.it//scores';
+    const URL = 'http://localhost:57061/scores';
+    // const URL = 'http://tetris.chrum.it//scores';
     return this._http.get(URL, { headers })
     // return this._http.get('https://gorest.co.in/public-api/todos');
 

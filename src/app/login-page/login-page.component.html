@@ -34,4 +34,21 @@
     <br />
 
     <button [disabled]="!loginForm.valid">Log In</button>
+
 </form>
+<div>
+    <button (click)="selectColor('normal')">Normal contrast on</button>
+</div>
+<div>
+    <button (click)="selectColor('highContrast')">High contrast on</button>
+</div>
+<!-- <p>Set High Contrast</p><input type="checkbox" id="coding" name="highContrast" value="highContrastOn"
+    (change)="selectColor()"> -->
+
+
+<!-- <div>
+    <select [(ngModel)]="colorPalette" required name="colorPalette" id="colorPalette">
+        <option selected value="normal">Normal</option>
+        <option value="highContrast">High Contrast</option>
+    </select>
+</div> -->

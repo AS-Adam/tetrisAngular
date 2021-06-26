@@ -9,26 +9,26 @@ import { GameComponent } from './game/game.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
+import { SortByScorePipe } from './sort-by-score.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    // SortPipe,
     GameComponent,
     LoginPageComponent,
+    SortByScorePipe,
+
   ],
   imports: [
     BrowserModule,
     TetrisCoreModule,
     FormsModule,
-
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'login-page', component: LoginPageComponent },
-      { path: 'game', component: GameComponent },
-      { path: '', redirectTo: '/login-page', pathMatch: 'full' },
+      { path: 'login-page/:color', component: LoginPageComponent },
+      { path: 'game/:color', component: GameComponent },
+      { path: '', redirectTo: '/login-page/normal', pathMatch: 'full' },
       { path: '**', redirectTo: '' }
     ]),
     HttpClientModule

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Player } from "../app.component";
 import { DataService } from '../data.service';
@@ -19,19 +19,24 @@ export class GameComponent implements OnInit {
     public playerName: string;
     public highScores;
     public testList
-
-    constructor(private _router: Router, private _dataService: DataService) {
+    public color: string;
+    public sortAscending = false;
+    public scoresData = [];
+    constructor(private _router: Router, private _dataService: DataService, private _route: ActivatedRoute) {
         this.playerName = this._dataService.getData().name;
         this._dataService.getScores()
             .subscribe((result) => {
-                this.highScores = result[1].name;
+                this.highScores = result;
                 console.log(result)
             });
 
     }
 
     ngOnInit(): void {
-
+        this._route.params.subscribe(({ color }) => {
+            this.color = color;
+            console.log(color);
+        });
     }
     gameCounter() {
         this.counter++;
@@ -39,6 +44,9 @@ export class GameComponent implements OnInit {
     closeGame() {
         this.close.emit();
         this._router.navigate(['/login-page'])
+    }
+    toggleAscending() {
+        this.sortAscending = !this.sortAscending;
     }
 
 
