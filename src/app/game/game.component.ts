@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Player } from "../app.component";
 import { DataService } from '../data.service';
 // import { start } from 'repl';
@@ -21,8 +22,12 @@ export class GameComponent implements OnInit {
 
     constructor(private _router: Router, private _dataService: DataService) {
         this.playerName = this._dataService.getData().name;
-        this.testList = this._dataService.getScores().subscribe();
-        this.highScores = this.testList;
+        this._dataService.getScores()
+            .subscribe((result) => {
+                this.highScores = result[1].name;
+                console.log(result)
+            });
+
     }
 
     ngOnInit(): void {
