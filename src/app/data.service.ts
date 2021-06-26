@@ -18,8 +18,8 @@ export class DataService {
       accept: 'application/json',
       'Content-Type': 'application/json',
     });
-    const URL = 'http://localhost:57061/scores';
-    // const URL = 'http://tetris.chrum.it//scores';
+    // const URL = 'http://localhost:57061/scores';
+    const URL = 'http://tetris.chrum.it//scores';
     return this._http.get(URL, { headers })
 
   }
